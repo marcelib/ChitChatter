@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
+<meta name="description" content="A simple messaging application.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
 <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+      href="https://fonts.googleapis.com/css?family=Roboto:regular,
+      bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Audiowide' type='text/css'>
 <link rel="stylesheet" href="styles.css">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 <title>ChitChatter</title>
-<title>Hello World in Vue.js</title>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
 <body>
-
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-
     <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row">
           <span class="main-title">
@@ -37,13 +39,11 @@
             </div>
         </div>
     </div>
-
     <div id="vue-home">
         <h1>{{ msg }}</h1>
     </div>
 </div>
-
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</body>
 
 <script>
     var vueHome = new Vue({
@@ -53,5 +53,4 @@
         }
     });
 </script>
-</body>
 </html>
