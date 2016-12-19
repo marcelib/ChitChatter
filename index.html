@@ -29,9 +29,9 @@
             <div class="header-spacer mdl-layout-spacer"></div>
             <div class="navigation-container">
                 <nav class="navigation-list mdl-navigation">
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">All conversations</a>
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Unread messages</a>
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Create message</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="conversations">All conversations</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="unread">Unread messages</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="newMessage">Create message</a>
                     <button class="mdl-button mdl-js-button mdl-button--raised login-button">
                         Log in
                     </button>
@@ -39,18 +39,39 @@
             </div>
         </div>
     </div>
-    <div id="vue-home">
+    <div id="vue-app">
         <h1>{{ msg }}</h1>
     </div>
 </div>
 </body>
 
 <script>
-    var vueHome = new Vue({
-        el: "#vue-home",
+
+    const Home = {template: '<h1>This is a home page</h1>'};
+    const Conversations = {template: '<h1>This is an all conversations page</h1>'};
+    const Unread = {template: '<h1>This is a unread messages page</h1>'};
+    const NewMessage = {template: '<h1>This is a new message page</h1>'};
+    const Login = {template: '<h1>Login page</h1>'};
+    const NotFound = {template: '<h1>Page not found</h1>'};
+    const routes = {
+        '/': Home,
+        '/conversations': Conversations,
+        '/unread': Unread,
+        '/newMessage': NewMessage
+    };
+    new Vue({
+        el: '#vue-app',
         data: {
-            msg: "Hello World!"
+            currentRoute: window.location.pathname
+        },
+        computed: {
+            ViewComponent () {
+                return routes[this.currentRoute] || NotFound
+            }
+        },
+        render (h) {
+            return h(this.ViewComponent)
         }
-    });
+    })
 </script>
 </html>
