@@ -6,6 +6,20 @@ a img {
     border: 0;
 }
 
+@media only screen and (max-width: 1024px) {
+    h1 {
+        font-size: 1.5em !important;
+    }
+
+    a {
+        font-size: 1em !important;
+    }
+
+    span {
+        font-size: 1em !important;
+    }
+}
+
 ::-moz-selection {
     background-color: #6ab344;
     color: #fff;
@@ -33,12 +47,20 @@ a img {
     font-size: 14px;
 }
 
+.mdl-layout__header-row {
+    height: 56px;
+    width: 100vw;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .navigation-container {
     direction: rtl;
     -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
-    width: 500px;
+    width: 100%;
     transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
     width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -48,7 +70,7 @@ a img {
     -webkit-justify-content: flex-end;
     -ms-flex-pack: end;
     justify-content: flex-end;
-    width: 800px;
+    width: 100%;
 }
 
 .android-search-box.is-focused + .navigation-container {
@@ -108,7 +130,9 @@ a img {
 .main-title {
     font-family: 'Audiowide', Arial, sans-serif;
     color: black;
-    font-size: xx-large;
+    position: absolute;
+    left: 0;
+    font-size: large;
 }
 
 .login-button {

@@ -20,27 +20,34 @@
 <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
 <body>
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
-        <div class="mdl-layout__header-row">
-          <span class="main-title">
-            <img class="image-logo" src="images/logo-large.png">ChitChatter
-          </span>
-            <div class="header-spacer mdl-layout-spacer"></div>
-            <div class="navigation-container">
-                <nav class="navigation-list mdl-navigation">
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="conversations">All conversations</a>
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="unread">Unread messages</a>
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="newMessage">Create message</a>
-                    <button class="mdl-button mdl-js-button mdl-button--raised login-button">
-                        Log in
-                    </button>
-                </nav>
+<div id="app">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
+            <div class="mdl-layout__header-row">
+                    <router-link to="/" class="main-title">
+                        <img class="image-logo" src="images/logo-large.png">ChitChatter
+                </router-link>
+                <div class="header-spacer mdl-layout-spacer"></div>
+                <div class="navigation-container">
+                    <nav class="navigation-list mdl-navigation">
+                        <router-link to="/conversations" class="mdl-navigation__link mdl-typography--text-uppercase">
+                            All conversations
+                        </router-link>
+                        <router-link to="/unread" class="mdl-navigation__link mdl-typography--text-uppercase">
+                            Unread messages
+                        </router-link>
+                        <router-link to="/newMessage" class="mdl-navigation__link mdl-typography--text-uppercase">
+                            Create message
+                        </router-link>
+                        <button class="mdl-button mdl-js-button mdl-button--raised login-button">
+                            Log in
+                        </button>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="vue-app">
-        <h1>{{ msg }}</h1>
+        <router-view>
+        </router-view>
     </div>
 </div>
 </body>
@@ -53,25 +60,15 @@
     const NewMessage = {template: '<h1>This is a new message page</h1>'};
     const Login = {template: '<h1>Login page</h1>'};
     const NotFound = {template: '<h1>Page not found</h1>'};
-    const routes = {
-        '/': Home,
-        '/conversations': Conversations,
-        '/unread': Unread,
-        '/newMessage': NewMessage
-    };
-    new Vue({
-        el: '#vue-app',
-        data: {
-            currentRoute: window.location.pathname
-        },
-        computed: {
-            ViewComponent () {
-                return routes[this.currentRoute] || NotFound
-            }
-        },
-        render (h) {
-            return h(this.ViewComponent)
-        }
-    })
+    const routes = [
+        {path: '/', component: Home},
+        {path: '/conversations', component: Conversations},
+        {path: '/unread', component: Unread},
+        {path: '/newMessage', component: NewMessage}
+    ];
+    const router = new VueRouter({
+        routes
+    });
+    const app = new Vue({router}).$mount('#app');
 </script>
 </html>
