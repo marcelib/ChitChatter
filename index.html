@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="description" content="A simple messaging application.">
@@ -64,17 +64,28 @@
         </ul>
     </nav>
     <main>
-        <div class="helper">
+        <div class="template-wrapper">
             <router-view>
             </router-view>
         </div>
     </main>
-
 </div>
 </body>
-
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-<script src="assets/js/index.js" type="application/javascript">
+<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+<script src="assets/js/index.js" type="application/javascript"></script>
+<script type="x-template" id="tpl-login">
+    <div class="login-template">
+        <h1>You are not currently logged in</h1>
+        <div class="login-wrap">
+            <h2>Login</h2>
+                <div class="form">
+                    <input type="text" placeholder="Username" name="username" id="username"/>
+                    <input type="password" placeholder="Password" name="password" id="password"/>
+                    <button id="submit-button" class="submit-button" onclick="logIn()"> Sign in</button>
+                </div>
+        </div>
+    </div>
 </script>
 </html>
