@@ -1,74 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="A simple messaging application.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-<meta charset="utf-8">
-<meta name="description" content="A simple messaging application.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-
-<link rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:regular,
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,
       bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Audiowide' type='text/css'>
-<link rel="stylesheet" href="styles.css">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Audiowide' type='text/css'>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-<title>ChitChatter</title>
-
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <title>ChitChatter</title>
+</head>
 
 <body>
 <div id="app">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
-            <div class="mdl-layout__header-row">
-                    <router-link to="/" class="main-title">
-                        <img class="image-logo" src="images/logo-large.png">ChitChatter
-                </router-link>
-                <div class="header-spacer mdl-layout-spacer"></div>
-                <div class="navigation-container">
-                    <nav class="navigation-list mdl-navigation">
-                        <router-link to="/conversations" class="mdl-navigation__link mdl-typography--text-uppercase">
-                            All conversations
-                        </router-link>
-                        <router-link to="/unread" class="mdl-navigation__link mdl-typography--text-uppercase">
-                            Unread messages
-                        </router-link>
-                        <router-link to="/newMessage" class="mdl-navigation__link mdl-typography--text-uppercase">
-                            Create message
-                        </router-link>
-                        <button class="mdl-button mdl-js-button mdl-button--raised login-button">
-                            Log in
-                        </button>
-                    </nav>
-                </div>
-            </div>
+    <nav class="menu" tabindex="0">
+        <div class="smartphone-menu-trigger"></div>
+        <header class="avatar">
+            <img src="assets/img/unknown_user.png"/>
+            <h2>Not signed in</h2>
+        </header>
+        <ul>
+            <router-link to="/" class="menu-link">
+                <li tabindex="0" class="icon-customers">
+                <span>
+                    Home
+                </span>
+                </li>
+            </router-link>
+            <router-link to="/conversations" class="menu-link">
+                <li tabindex="0" class="icon-dashboard">
+                <span>
+                        All conversations
+                </span>
+                </li>
+            </router-link>
+            <router-link to="/unread" class="menu-link">
+                <li tabindex="0" class="icon-users">
+                <span>
+                        Unread messages
+                </span>
+                </li>
+            </router-link>
+            <router-link to="/newMessage" class="menu-link">
+                <li tabindex="0" class="icon-settings">
+                <span>
+                        Create message
+                </span>
+                </li>
+            </router-link>
+            <router-link to="/login" class="menu-link">
+                <li tabindex="0" class="icon-settings">
+                <span>
+                    Login
+                </span>
+                </li>
+            </router-link>
+        </ul>
+    </nav>
+    <main>
+        <div class="helper">
+            <router-view>
+            </router-view>
         </div>
-        <router-view>
-        </router-view>
-    </div>
+    </main>
+
 </div>
 </body>
 
-<script>
-
-    const Home = {template: '<h1>This is a home page</h1>'};
-    const Conversations = {template: '<h1>This is an all conversations page</h1>'};
-    const Unread = {template: '<h1>This is a unread messages page</h1>'};
-    const NewMessage = {template: '<h1>This is a new message page</h1>'};
-    const Login = {template: '<h1>Login page</h1>'};
-    const NotFound = {template: '<h1>Page not found</h1>'};
-    const routes = [
-        {path: '/', component: Home},
-        {path: '/conversations', component: Conversations},
-        {path: '/unread', component: Unread},
-        {path: '/newMessage', component: NewMessage}
-    ];
-    const router = new VueRouter({
-        routes
-    });
-    const app = new Vue({router}).$mount('#app');
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="assets/js/index.js" type="application/javascript">
 </script>
 </html>
